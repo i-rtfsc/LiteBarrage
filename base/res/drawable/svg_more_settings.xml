@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  Copyright (c) 2018 anqi.huang@outlook.com
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportHeight="1024"
+    android:viewportWidth="1024">
+
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M623.604,177.19 C623.604,238.572,573.382,288.793,512,288.793
+S400.396,238.571,400.396,177.189 S450.618,65.5857,512,65.5857
+S623.604,115.808,623.604,177.19 Z" />
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M623.604,512 C623.604,573.382,573.382,623.604,512,623.604
+S400.396,573.382,400.396,512 S450.618,400.396,512,400.396
+S623.604,450.618,623.604,512 Z" />
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M623.604,846.81 C623.604,908.192,573.382,958.414,512,958.414
+S400.396,908.192,400.396,846.81 C400.396,785.428,450.618,735.206,512,735.206
+S623.604,785.428,623.604,846.81 Z" />
+</vector>
