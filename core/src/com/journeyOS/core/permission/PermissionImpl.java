@@ -27,6 +27,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 
 import com.journeyOS.core.CoreManager;
+import com.journeyOS.core.api.appprovider.IAppProvider;
 import com.journeyOS.core.base.BaseActivity;
 import com.journeyOS.literouter.annotation.ARouterInject;
 
@@ -49,6 +50,7 @@ public class PermissionImpl implements IPermissionApi {
             if ((ActivityCompat.checkSelfPermission(CoreManager.getContext(), permission) != PackageManager.PERMISSION_GRANTED)) {
                 if (Manifest.permission.READ_PHONE_STATE.equals(permission)) {
                 } else if (Manifest.permission.WRITE_EXTERNAL_STORAGE.equals(permission)) {
+                    CoreManager.getImpl(IAppProvider.class).initApps();
                 }
             }
         }
@@ -65,6 +67,7 @@ public class PermissionImpl implements IPermissionApi {
             for (int index = 0; index < permissions.length; index++) {
                 if (Manifest.permission.READ_PHONE_STATE.equals(permissions[index]) && grantResults[index] == PackageManager.PERMISSION_GRANTED) {
                 } else if (Manifest.permission.WRITE_EXTERNAL_STORAGE.equals(permissions[index]) && grantResults[index] == PackageManager.PERMISSION_GRANTED) {
+                    CoreManager.getImpl(IAppProvider.class).initApps();
                 }
             }
         }

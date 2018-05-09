@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 anqi.huang@outlook.com
+ * Copyright (c) 2018 anqi.huang@outlook.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
-package com.journeyOS.base;
+package com.journeyOS.plugins.settings.app.repository.db;
 
-public class Constant {
-    public static final boolean DEBUG = true;
-    //SharedPreferences KEY
-    public static final String DAEMON = "daemon";
-    public static final String APP_INITED = "appInited";
 
-    public static final String USER = "Solo";
-    public static final String EMAIL = "anqi.huang@outlook.com";
-    public static final String GIT_HUB_ID = "journeyOS";
+import android.arch.persistence.room.Database;
+import android.arch.persistence.room.RoomDatabase;
 
+import com.journeyOS.core.api.appprovider.App;
+
+@Database(entities = {App.class}, version = 1)
+public abstract class AppDatabase extends RoomDatabase {
+    public abstract AppDao appDao();
 }

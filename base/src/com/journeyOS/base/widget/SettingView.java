@@ -21,6 +21,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
@@ -36,6 +37,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.journeyOS.base.R;
+import com.journeyOS.base.utils.LogUtils;
 import com.journeyOS.base.utils.UIUtils;
 
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
@@ -312,6 +314,20 @@ public class SettingView extends RelativeLayout {
     protected void hideHelpView() {
         mRightHelpView.setVisibility(GONE);
         mRightView.setVisibility(VISIBLE);
+    }
+
+    public void setIcon(Drawable drawable) {
+        LogUtils.d("PluginsSettingsActivity", " icon = "+mIcon + "  Drawable = "+drawable);
+        if (mIcon != null) {
+
+            mIcon.setImageDrawable(drawable);
+        }
+    }
+
+    public void setTitle(String title) {
+        if (mTitle != null) {
+            mTitle.setText(title);
+        }
     }
 
     /**

@@ -7,3 +7,6 @@
 [submodule "literouter-annotation"]
 	path = literouter-annotation
 	url = git@bitbucket.org:solo_heart/literouter-annotation.git
+[submodule "litetask"]
+	path = litetask
+	url = git@bitbucket.org:solo_heart/litetask.git

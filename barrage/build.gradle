@@ -80,6 +80,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     implementation project(':core')
+    implementation project(':plugins')
     implementation "com.github.ctiao:DanmakuFlameMaster:$gradle.danmaku"
     implementation "com.github.ctiao:ndkbitmap-armv7a:$gradle.danmaku_ndk"
 

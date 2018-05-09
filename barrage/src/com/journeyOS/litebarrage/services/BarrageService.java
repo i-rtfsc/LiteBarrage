@@ -26,15 +26,19 @@ import android.service.notification.StatusBarNotification;
 import com.journeyOS.base.Constant;
 import com.journeyOS.base.persistence.SpUtils;
 import com.journeyOS.base.receiver.ScreenObserver;
+import com.journeyOS.base.utils.BaseUtils;
 import com.journeyOS.base.utils.LogUtils;
 import com.journeyOS.core.CoreManager;
 import com.journeyOS.core.Messages;
+import com.journeyOS.core.api.appprovider.App;
+import com.journeyOS.core.api.appprovider.IAppProvider;
 import com.journeyOS.core.api.daemon.IAliveApi;
 import com.journeyOS.litebarrage.entity.MessageInfos;
 import com.journeyOS.litebarrage.entity.NotificationTransverter;
 import com.journeyOS.litebarrage.wm.BarrageManager;
 import com.journeyOS.literouter.Router;
 import com.journeyOS.literouter.RouterListener;
+import com.journeyOS.literouter.RouterMsssage;
 
 
 public class BarrageService extends NotificationListenerService implements ScreenObserver.ScreenStateListener, RouterListener {
@@ -56,13 +60,23 @@ public class BarrageService extends NotificationListenerService implements Scree
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
         super.onNotificationPosted(sbn);
-        MessageInfos infos = NotificationTransverter.convertFromNotification(sbn);
+        final MessageInfos infos = NotificationTransverter.convertFromNotification(sbn);
         LogUtils.d(TAG, infos.toString());
-
-        Message msg = new Message();
-        msg.what = H.MSG_BARRAGE_SHOW;
-        msg.obj = infos;
-        mHandler.sendMessage(msg);
+        if (BaseUtils.isNull(infos)) {
+            return;
+        }
+        CoreManager.getImpl(IAppProvider.class).getAppWorkHandler().post(new Runnable() {
+            @Override
+            public void run() {
+                App app = CoreManager.getImpl(IAppProvider.class).getApp(infos.packageName);
+                if (!BaseUtils.isNull(app) && app.toggle) {
+                    Message msg = new Message();
+                    msg.what = H.MSG_BARRAGE_SHOW;
+                    msg.obj = infos;
+                    mHandler.sendMessage(msg);
+                }
+            }
+        });
     }
 
     @Override
@@ -103,7 +117,7 @@ public class BarrageService extends NotificationListenerService implements Scree
     }
 
     @Override
-    public void onShowMessage(com.journeyOS.literouter.Message message) {
+    public void onShowMessage(RouterMsssage message) {
         Messages msg = (Messages) message;
         switch (msg.what) {
             case Messages.MSG_DEBUG_BARRAGE:

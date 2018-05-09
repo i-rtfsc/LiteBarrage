@@ -23,7 +23,6 @@
 
     <!-- 全圆角-->
     <LinearLayout style="@style/wrap_layout">
-
         <com.journeyOS.base.widget.SettingSwitch
             android:id="@+id/daemon"
             style="@style/single_layout"

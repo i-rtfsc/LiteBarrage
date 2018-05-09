@@ -18,6 +18,7 @@ package com.journeyOS.base.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.SwitchCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -60,6 +61,16 @@ public class SettingSwitch extends SettingView {
         mSwitchButton.setLayoutParams(params);
 
         return mSwitchButton;
+    }
+
+    @Override
+    public void setIcon(Drawable drawable) {
+        super.setIcon(drawable);
+    }
+
+    @Override
+    public void setTitle(String title) {
+        super.setTitle(title);
     }
 
     public void setCheck(boolean isCheck) {

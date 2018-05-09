@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  Copyright (c) 2018 anqi.huang@outlook.com
+  Copyright (c) 2018 anqi.huang@outlook.com.
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -14,13 +14,10 @@
   limitations under the License.
   -->
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
-    <item
-        android:id="@+id/more"
-        android:icon="@drawable/svg_more_settings"
-        android:title="@string/action_settings"
-        app:showAsAction="withText|always" />
-</menu>
+<resources>
+
+    <style name="plugins_Settings" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/lightskyblue</item>
+        <!--<item name="android:textColorPrimary">@android:color/white</item>-->
+    </style>
+</resources>

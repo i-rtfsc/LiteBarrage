@@ -20,9 +20,11 @@ import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.journeyOS.base.utils.UIUtils;
 import com.journeyOS.core.CoreManager;
+import com.journeyOS.core.api.appprovider.IAppProvider;
 import com.journeyOS.core.base.BaseActivity;
 import com.journeyOS.core.base.BaseFragment;
 import com.journeyOS.core.permission.IPermissionApi;
@@ -40,7 +42,6 @@ public class SettingsActivity extends BaseActivity {
     public void initBeforeView() {
         super.initBeforeView();
         CoreManager.getImpl(IPermissionApi.class).initUrgentPermission(this);
-
         Intent intent = new Intent(SettingsActivity.this, BarrageService.class);
         startService(intent);
     }
@@ -67,6 +68,20 @@ public class SettingsActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        super.onOptionsItemSelected(menuItem);
+        switch (menuItem.getItemId()) {
+            case R.id.more:
+                CoreManager.getImpl(IAppProvider.class).navigationSettingsActivity(CoreManager.getContext());
+                break;
+            default:
+                break;
+
+        }
         return true;
     }
 }

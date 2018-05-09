@@ -15,6 +15,7 @@
   -->
 
 <resources>
+
     <!-- 最外层样式 -->
     <style name="wrap_layout">
         <item name="android:orientation">vertical</item>

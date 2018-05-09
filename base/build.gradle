@@ -49,7 +49,7 @@ dependencies {
 //    api "com.squareup.retrofit2:converter-gson:$gradle.retrofit2"
     api "com.tencent.bugly:crashreport_upgrade:$gradle.bugly_crashreport_upgrade"
     // ViewModel and LiveData
-//    api "android.arch.lifecycle:extensions:$gradle.lifecycle_extensions"
+    api "android.arch.lifecycle:extensions:$gradle.lifecycle_extensions"
     // Room
     api "android.arch.persistence.room:runtime:$gradle.room_runtime"
 

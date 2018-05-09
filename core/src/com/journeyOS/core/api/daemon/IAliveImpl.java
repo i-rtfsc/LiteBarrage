@@ -29,7 +29,6 @@ public class IAliveImpl implements IAliveApi {
         } catch (ActivityNotFoundException e) {
             LogUtils.d(TAG, e);
         }
-
     }
 
 }
