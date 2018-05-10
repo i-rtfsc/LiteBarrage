@@ -17,6 +17,7 @@
 package com.journeyOS.litebarrage.ui;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.journeyOS.base.Constant;
 import com.journeyOS.base.persistence.SpUtils;
@@ -31,6 +32,7 @@ import com.journeyOS.litebarrage.utils.DebugFeature;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import es.dmoral.toasty.Toasty;
 
 public class SettingsFragment extends BaseFragment {
     private static final String TAG = SettingsFragment.class.getSimpleName();
@@ -71,15 +73,19 @@ public class SettingsFragment extends BaseFragment {
     @OnClick({R.id.overflow})
     public void overflowPermission() {
         boolean hasPermission = CoreManager.getImpl(IPermissionApi.class).canDrawOverlays(mContext);
-        if (hasPermission)
-            BaseUtils.Toast(mContext, mContext.getString(R.string.has_permission) + mContext.getString(R.string.overflow));
+        if (hasPermission) {
+            String message = mContext.getString(R.string.has_permission) + mContext.getString(R.string.overflow);
+            Toasty.success(mContext, message, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @OnClick({R.id.notification_permission})
     public void notificationPermission() {
         boolean hasPermission = CoreManager.getImpl(IPermissionApi.class).listenerNotification(mContext, BarrageService.class.getName());
-        if (hasPermission)
-            BaseUtils.Toast(mContext, mContext.getString(R.string.has_permission) + mContext.getString(R.string.notification_permission));
+        if (hasPermission) {
+            String message = mContext.getString(R.string.has_permission) + mContext.getString(R.string.notification_permission);
+            Toasty.success(mContext, message, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @OnClick({R.id.barrage_debug})

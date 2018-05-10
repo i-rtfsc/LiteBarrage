@@ -25,13 +25,11 @@ import com.journeyOS.base.utils.LogUtils;
 import com.journeyOS.core.CoreManager;
 import com.journeyOS.core.api.appprovider.App;
 import com.journeyOS.core.repository.DBHelper;
-import com.journeyOS.literouter.Router;
 import com.journeyOS.literouter.annotation.ARouterInject;
 import com.journeyOS.litetask.TaskScheduler;
 import com.journeyOS.plugins.settings.app.repository.db.AppDatabase;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 @ARouterInject(api = IAppRepositoryApi.class)
@@ -44,7 +42,6 @@ public class AppRepositoryImpl implements IAppRepositoryApi {
     public void onCreate() {
         mAppDatabase = DBHelper.provider(AppDatabase.class, "app.db");
         mAppHandler = TaskScheduler.provideHandler(TAG);
-        Router.getDefault().register(this);
     }
 
 
@@ -120,16 +117,4 @@ public class AppRepositoryImpl implements IAppRepositoryApi {
         return mAppDatabase.appDao().getApp(packageName);
     }
 
-
-    private class AppComparator implements Comparator<App> {
-
-        @Override
-        public int compare(App appLeft, App appRight) {
-
-            char a = appLeft.appName.charAt(0);
-            char b = appRight.appName.charAt(0);
-
-            return a - b;
-        }
-    }
 }

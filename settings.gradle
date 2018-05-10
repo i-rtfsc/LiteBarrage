@@ -20,6 +20,7 @@ def initVersion() {
     gradle.ext.materialprogressbar = '1.4.2'
     gradle.ext.butterknife = '8.8.1'
     gradle.ext.gson = '2.8.1'
+    gradle.ext.toasty = "1.3.0"
 
     //core dependencies
     gradle.ext.stetho ='1.5.0'

@@ -26,10 +26,6 @@ public class BaseUtils {
 
     public static final String SEPARATOR = "#";
 
-    public static void Toast(Context context, String msg) {
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
-    }
-
     public static boolean isEmpty(CharSequence str) {
         return isNull(str) || str.length() == 0;
     }

@@ -19,6 +19,8 @@ package com.journeyOS.core.appconfig;
 import android.app.Application;
 import android.content.Context;
 import android.os.Environment;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 
 import com.facebook.stetho.Stetho;
 import com.journeyOS.base.persistence.SpUtils;
@@ -26,6 +28,8 @@ import com.journeyOS.core.BuildConfig;
 import com.journeyOS.core.R;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
+
+import es.dmoral.toasty.Toasty;
 
 
 public class AppConfig {
@@ -36,6 +40,7 @@ public class AppConfig {
         initANRWatch(context);
         initCrashReport(context);
         initSharedPreference(context);
+        initToastyConfig(context);
     }
 
     private static void initCrashReport(Context context) {
@@ -59,5 +64,16 @@ public class AppConfig {
 
     private static void initSharedPreference(Context context) {
         SpUtils.init(context);
+    }
+
+    private static void initToastyConfig(Context context) {
+        Toasty.Config.getInstance()
+                .setErrorColor(context.getResources().getColor(R.color.red))
+                .setInfoColor(context.getResources().getColor(R.color.colorPrimary))
+                .setSuccessColor(context.getResources().getColor(R.color.darkturquoise))
+                .setWarningColor(context.getResources().getColor(R.color.tomato))
+                .setTextColor(context.getResources().getColor(R.color.white))
+                .tintIcon(true)
+                .apply();
     }
 }

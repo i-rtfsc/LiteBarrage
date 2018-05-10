@@ -16,6 +16,8 @@
 
 package com.journeyOS.plugins.settings.ui.adapter;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 
 import com.journeyOS.base.adapter.BaseRecyclerAdapter;
@@ -63,10 +65,21 @@ public class AppHolder extends BaseViewHolder<AppInfoData> {
                 String packageName = mAppInfoData.getPackageName();
                 App app = CoreManager.getImpl(IAppRepositoryApi.class).getApp(packageName);
                 boolean toggle = !app.toggle;
-                mSwitch.setCheck(toggle);
+                setChecked(toggle);
                 app.toggle = toggle;
                 CoreManager.getImpl(IAppRepositoryApi.class).updateApp(app);
             }
         });
+    }
+
+    void setChecked(final boolean checked) {
+        final Handler mainHandler = new Handler(Looper.getMainLooper());
+        mainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                mSwitch.setCheck(checked);
+            }
+        });
+
     }
 }

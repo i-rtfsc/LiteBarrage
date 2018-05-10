@@ -16,12 +16,16 @@
 
 package com.journeyOS.litebarrage.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.journeyOS.base.utils.BaseUtils;
 import com.journeyOS.base.utils.UIUtils;
 import com.journeyOS.core.CoreManager;
 import com.journeyOS.core.api.appprovider.IAppProvider;
@@ -32,8 +36,13 @@ import com.journeyOS.litebarrage.R;
 import com.journeyOS.litebarrage.services.BarrageService;
 
 import butterknife.BindView;
+import es.dmoral.toasty.Toasty;
 
 public class SettingsActivity extends BaseActivity {
+    private Context mContext;
+
+    private static final long EXIT_TIME = 3000l;
+    private long firstTime = 0;
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -41,6 +50,7 @@ public class SettingsActivity extends BaseActivity {
     @Override
     public void initBeforeView() {
         super.initBeforeView();
+        mContext = CoreManager.getContext();
         CoreManager.getImpl(IPermissionApi.class).initUrgentPermission(this);
         Intent intent = new Intent(SettingsActivity.this, BarrageService.class);
         startService(intent);
@@ -83,5 +93,21 @@ public class SettingsActivity extends BaseActivity {
 
         }
         return true;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        long secondTime = System.currentTimeMillis();
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (secondTime - firstTime < EXIT_TIME) {
+                System.exit(0);
+            } else {
+                String message = mContext.getString(R.string.exit_app);
+                Toasty.warning(mContext, message, Toast.LENGTH_SHORT).show();
+                firstTime = System.currentTimeMillis();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

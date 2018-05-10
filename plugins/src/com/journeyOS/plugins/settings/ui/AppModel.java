@@ -54,7 +54,7 @@ public class AppModel extends BaseViewModel {
                         String packageName = app.packageName;
                         Boolean toggle = app.toggle;
                         Drawable drawable = AppUtils.getAppIcon(mContext, packageName);
-                        String label = AppUtils.getAppName(mContext, packageName);
+                        String label = app.appName;
                         AppInfoData appInfoData = new AppInfoData(drawable, label, packageName, toggle);
                         appInfoDatas.add(appInfoData);
                     }

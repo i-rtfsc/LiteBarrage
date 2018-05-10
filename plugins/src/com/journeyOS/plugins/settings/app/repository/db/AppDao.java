@@ -29,7 +29,7 @@ import java.util.List;
 
 @Dao
 public interface AppDao {
-    @Query("SELECT * FROM app ")
+    @Query("SELECT * FROM app ORDER BY toggle DESC, appName ASC")
     List<App> getAll();
 
     @Insert

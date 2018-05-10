@@ -44,7 +44,7 @@ import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
 public class SettingView extends RelativeLayout {
     protected static final int DEFAULT_COLOR = 0xff717171;
-    private static final String TAG = "asd";
+    private static final String TAG = SettingView.class.getSimpleName();
     private static final int IMAGE_ICON_ID = 1;
 
     private boolean isProgressing = false;

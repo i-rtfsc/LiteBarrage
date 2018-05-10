@@ -53,6 +53,8 @@ dependencies {
     // Room
     api "android.arch.persistence.room:runtime:$gradle.room_runtime"
 
+    api "com.github.GrenderG:Toasty:$gradle.toasty"
+
     debugApi "com.squareup.leakcanary:leakcanary-android:$gradle.leakcanary"
     releaseApi "com.squareup.leakcanary:leakcanary-android-no-op:$gradle.leakcanary"
 

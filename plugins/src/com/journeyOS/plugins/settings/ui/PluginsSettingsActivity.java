@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 
 import com.journeyOS.base.adapter.BaseRecyclerAdapter;
 import com.journeyOS.base.utils.LogUtils;
@@ -41,6 +42,8 @@ import butterknife.BindView;
 public class PluginsSettingsActivity extends BaseActivity {
     private static final String TAG = PluginsSettingsActivity.class.getSimpleName();
 
+    @BindView(R2.id.toolbar)
+    Toolbar mToolbar;
     @BindView(R2.id.apps_recyclerView)
     RecyclerView mAllAppsView;
 
@@ -72,6 +75,9 @@ public class PluginsSettingsActivity extends BaseActivity {
     @Override
     public void initViews() {
         UIUtils.setStatusBarColor(this, this.getResources().getColor(R.color.lightskyblue));
+        mToolbar.setTitle(R.string.tool_bar_title);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

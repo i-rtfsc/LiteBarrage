@@ -22,4 +22,5 @@
     <string name="notification_permission">通知权限</string>
     <string name="barrage_debug">弹幕测试</string>
     <string name="has_permission">已经获得</string>
+    <string name="exit_app">再按一次退出程序</string>
 </resources>

@@ -15,4 +15,6 @@
   -->
 
 <resources>
+    <string name="tool_bar_title">应用程序</string>
+    <string name="detail">选择您想支持弹幕消息的应用程序。</string>
 </resources>

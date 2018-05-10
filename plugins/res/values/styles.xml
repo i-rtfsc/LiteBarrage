@@ -18,6 +18,6 @@
 
     <style name="plugins_Settings" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/lightskyblue</item>
-        <!--<item name="android:textColorPrimary">@android:color/white</item>-->
+        <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 </resources>

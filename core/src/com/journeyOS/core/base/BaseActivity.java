@@ -20,8 +20,10 @@ package com.journeyOS.core.base;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 
+import com.journeyOS.base.utils.ActivityUtil;
 import com.journeyOS.core.CoreManager;
 import com.journeyOS.core.permission.IPermissionApi;
 
@@ -37,6 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         ButterKnife.bind(this);
         initViews();
         initDataObserver();
+        ActivityUtil.getInstance().addActivity(this);
     }
 
     protected void initDataObserver() {
@@ -69,6 +72,16 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        ActivityUtil.getInstance().removeActivity(this);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            ActivityUtil.getInstance().removeActivity(this);
+            this.finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
