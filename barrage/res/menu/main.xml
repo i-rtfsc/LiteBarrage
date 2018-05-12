@@ -20,7 +20,7 @@
     tools:context=".MainActivity">
     <item
         android:id="@+id/more"
-        android:icon="@drawable/svg_more_settings"
         android:title="@string/action_settings"
-        app:showAsAction="withText|always" />
+        app:showAsAction="withText|always"
+        />
 </menu>

@@ -47,7 +47,7 @@ public class BarrageService extends NotificationListenerService implements Scree
     BarrageManager mBarrageManager;
     private ScreenObserver mScreenObserver;
 
-    public static final long MSG_DELAY_TIME = 1000L * 10;
+    public static final long MSG_DELAY_TIME = 1000L * 5;
     private final H mHandler = new H();
 
     @Override
@@ -95,7 +95,7 @@ public class BarrageService extends NotificationListenerService implements Scree
     void prepareJob() {
         mContext = CoreManager.getContext();
 
-        mBarrageManager = new BarrageManager(mContext);
+        mBarrageManager = new BarrageManager(mContext, mHandler);
 
         mScreenObserver = new ScreenObserver(this);
         mScreenObserver.requestScreenStateUpdate(this);
@@ -138,10 +138,9 @@ public class BarrageService extends NotificationListenerService implements Scree
                 case MSG_BARRAGE_SHOW:
                     MessageInfos infos = (MessageInfos) msg.obj;
                     mBarrageManager.addDanmaku(infos.title + " : " + infos.text);
-                    mHandler.sendEmptyMessageDelayed(H.MSG_BARRAGE_HIDE, MSG_DELAY_TIME);
                     break;
                 case MSG_BARRAGE_HIDE:
-//                    mBarrageManager.hideBarrage();
+                    mBarrageManager.hideBarrage();
                     break;
             }
         }

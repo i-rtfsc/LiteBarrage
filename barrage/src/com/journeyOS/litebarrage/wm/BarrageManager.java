@@ -19,6 +19,7 @@ package com.journeyOS.litebarrage.wm;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
+import android.os.Handler;
 import android.support.annotation.MainThread;
 import android.view.Gravity;
 import android.view.View;
@@ -29,6 +30,7 @@ import com.journeyOS.base.utils.BaseUtils;
 import com.journeyOS.base.utils.LogUtils;
 import com.journeyOS.base.utils.UIUtils;
 import com.journeyOS.litebarrage.R;
+import com.journeyOS.litebarrage.services.BarrageService;
 
 import java.util.HashMap;
 
@@ -52,6 +54,7 @@ public class BarrageManager {
 
     private Context mContext;
     private WindowManager mWm;
+    private Handler mHandler;
 
     private DanmakuView mDanmakuView;
     private BaseDanmakuParser mParser = new BaseDanmakuParser() {
@@ -61,9 +64,10 @@ public class BarrageManager {
         }
     };
 
-    public BarrageManager(Context context) {
+    public BarrageManager(Context context, Handler handler) {
         mContext = context;
         mWm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        mHandler = handler;
     }
 
     DanmakuView initDanmakuView(DanmakuContext danmakuContext) {
@@ -77,12 +81,16 @@ public class BarrageManager {
                 @Override
                 public void drawingFinished() {
                     if (Constant.DEBUG) LogUtils.d(TAG, "on barrage drawing finished");
-                    hideBarrage();
+                    //hideBarrage();
+                    mHandler.sendEmptyMessageDelayed(BarrageService.H.MSG_BARRAGE_HIDE, BarrageService.MSG_DELAY_TIME);
                 }
 
                 @Override
                 public void danmakuShown(BaseDanmaku danmaku) {
                     if (Constant.DEBUG) LogUtils.d(TAG, "on barrage shown");
+                    if (mHandler.hasMessages(BarrageService.H.MSG_BARRAGE_HIDE)) {
+                        mHandler.removeMessages(BarrageService.H.MSG_BARRAGE_HIDE);
+                    }
                 }
 
                 @Override

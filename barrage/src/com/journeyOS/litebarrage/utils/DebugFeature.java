@@ -26,7 +26,7 @@ public class DebugFeature {
         LogUtils.d("BarrageService", "sendBarrage");
         Messages msg = new Messages();
         msg.what = Messages.MSG_DEBUG_BARRAGE;
-        msg.obj = "这是一条弹幕测试";
+        msg.obj = "An Android application which allows you received messages to screen. Project webside : https://github.com/journeyOS/LiteBarrage";
         Router.getDefault().post(msg);
     }
 }
