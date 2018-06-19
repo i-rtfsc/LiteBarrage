@@ -35,9 +35,13 @@ def initVersion() {
     //
     gradle.ext.danmaku = '0.9.25'
     gradle.ext.danmaku_ndk = '0.9.21'
+
+    gradle.ext.literouter_core = '1.1.0'
+    gradle.ext.literouter_compiler = '1.0.2'
+    gradle.ext.litetask = '1.0.1'
 }
 
 initLocalGradleEnvironment()
 initVersion()
 
-include ':base', ':litetask', ':literouter', ':literouter-annotation', ':literouter-compiler', ':core', ':plugins',':barrage'
+include ':base', ':core', ':plugins',':barrage'

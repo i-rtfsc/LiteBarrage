@@ -34,10 +34,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation "me.zhanghai.android.materialprogressbar:library:$gradle.materialprogressbar"
 
-
+    api "com.journeyOS:litetask:$gradle.litetask"
+    api "com.journeyOS:literouter:$gradle.literouter_core"
     // api library , can be used in import module
     api "com.android.support:appcompat-v7:$gradle.supportVersion"
     api "com.android.support:design:$gradle.supportVersion"
@@ -52,7 +52,6 @@ dependencies {
     api "android.arch.lifecycle:extensions:$gradle.lifecycle_extensions"
     // Room
     api "android.arch.persistence.room:runtime:$gradle.room_runtime"
-
     api "com.github.GrenderG:Toasty:$gradle.toasty"
 
     debugApi "com.squareup.leakcanary:leakcanary-android:$gradle.leakcanary"
