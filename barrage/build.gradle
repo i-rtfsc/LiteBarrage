@@ -84,10 +84,8 @@ dependencies {
     implementation "com.github.ctiao:DanmakuFlameMaster:$gradle.danmaku"
     implementation "com.github.ctiao:ndkbitmap-armv7a:$gradle.danmaku_ndk"
 
-    annotationProcessor project(':literouter-compiler')
+    annotationProcessor "com.journeyOS:literouter-compiler:$gradle.literouter_compiler"
     annotationProcessor "com.jakewharton:butterknife-compiler:$gradle.butterknife"
-
-
     annotationProcessor "android.arch.persistence.room:compiler:$gradle.room_compiler"
 //    annotationProcessor "android.arch.lifecycle:compiler:$gradle.lifecycle_compiler"
 }
